@@ -8,12 +8,17 @@ import { execSync } from "child_process";
  * @param sideLength The length of each side of the square in pixels.
  */
 export function drawSquare(turtle: Turtle, sideLength: number): void {
-    for (let i = 0; i < 4; i++) {
-      turtle.forward(sideLength);
-      turtle.turn(90);
-    }
-  }
-  
+  // TODO: Implement drawSquare
+  // Example (incorrect square, just to show usage):
+  turtle.forward(sideLength);
+  turtle.turn(90);
+  turtle.forward(sideLength);
+  turtle.turn(180);
+  turtle.forward(sideLength);
+  turtle.turn(90);
+  turtle.forward(sideLength);
+  turtle.turn(400);
+}
 
 /**
  * Calculates the length of a chord of a circle.
@@ -23,8 +28,8 @@ export function drawSquare(turtle: Turtle, sideLength: number): void {
  * @returns The length of the chord.
  */
 export function chordLength(radius: number, angleInDegrees: number): number {
-  const angleInRadians = (angleInDegrees * Math.PI) / 180;
-  return 2 * radius * Math.sin(angleInRadians / 2);
+  // TODO: Implement chordLength
+  return 0; // Placeholder - replace with your implementation
 }
 
 /**
