@@ -105,12 +105,56 @@ export function findPath(turtle: Turtle, points: Point[]): string[] {
  * @param turtle The turtle to use.
  */
 export function drawPersonalArt(turtle: Turtle): void {
-  // TODO: Implement drawPersonalArt
-  // Example - replace with your own art!
-  for (let i = 0; i < 6; i++) {
-    turtle.forward(50);
-    turtle.turn(60);
+  turtle.turn(270 - turtle.getHeading()); 
+  const drawPetal = (size: number, color: Color) => {
+    turtle.color(color);
+    for (let i = 0; i < 2; i++) {
+      turtle.forward(size);
+      turtle.turn(60);
+      turtle.forward(size);
+      turtle.turn(120);
+    }
+  };
+  const drawSpiral = (rotations: number, step: number) => {
+    turtle.color("magenta");
+    for (let i = 0; i < rotations * 10; i++) {
+      turtle.forward(i / 5);
+      turtle.turn(36);
+    }
+  };
+  const colors: Color[] = ["red", "orange", "yellow", "green", "cyan", "blue", "purple", "magenta"];
+  for (let i = 0; i < 8; i++) {
+    drawPetal(30 + i * 2, colors[i % colors.length]);
+    turtle.turn(45);
   }
+  //center and spiral
+  turtle.turn(90);
+  turtle.forward(20);
+  drawSpiral(3, 5);
+
+  //stem
+  turtle.color("green");
+  turtle.turn(180);
+  turtle.forward(100); 
+  turtle.turn(90);
+  turtle.forward(10);
+  turtle.turn(180);
+  turtle.forward(20);
+
+  // leaves
+  const drawLeaf = () => {
+    turtle.color("green");
+    turtle.turn(30);
+    turtle.forward(15);
+    turtle.turn(120);
+    turtle.forward(15);
+    turtle.turn(120);
+    turtle.forward(15);
+  };
+  drawLeaf();
+  turtle.turn(180);
+  turtle.forward(40);
+  drawLeaf();
 }
 
 function generateHTML(
@@ -200,7 +244,7 @@ export function main(): void {
   console.log("Path instructions:", pathInstructions);
 
   // Draw personal art
-  // drawPersonalArt(turtle);
+   drawPersonalArt(turtle);
 
   const htmlContent = generateHTML((turtle as SimpleTurtle).getPath()); // Cast to access getPath
   saveHTMLToFile(htmlContent);
