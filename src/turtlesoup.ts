@@ -137,12 +137,12 @@ function saveHTMLToFile(
 
 function openHTML(filename: string = "output.html"): void {
   try {
-    // For macOS
-    execSync(`open ${filename}`);
+    // For Windows (i had to put windows one first, cuz it was opening with the mac verison)
+  execSync(`start ${filename}`);
   } catch {
     try {
-      // For Windows
-      execSync(`start ${filename}`);
+      // For macOS
+    execSync(`open ${filename}`);
     } catch {
       try {
         // For Linux
@@ -163,15 +163,15 @@ export function main(): void {
   drawSquare(turtle, 100);
 
   // Example chordLength calculation (for testing in console)
-  // console.log("Chord length for radius 5, angle 60 degrees:", chordLength(5, 60));
+  console.log("Chord length for radius 5, angle 60 degrees:", chordLength(5, 60));
 
   // Draw an approximate circle
-  // drawApproximateCircle(turtle, 50, 360);
+  drawApproximateCircle(turtle, 50, 360);
 
   // Example distance calculation (for testing in console)
-  // const p1: Point = {x: 1, y: 2};
-  // const p2: Point = {x: 4, y: 6};
-  // console.log("Distance between p1 and p2:", distance(p1, p2));
+  const p1: Point = {x: 1, y: 2};
+  const p2: Point = {x: 4, y: 6};
+  console.log("Distance between p1 and p2:", distance(p1, p2));
 
   // Example findPath (conceptual - prints path to console)
   // const pointsToVisit: Point[] = [{x: 20, y: 20}, {x: 80, y: 20}, {x: 80, y: 80}];
